@@ -4,7 +4,7 @@
     <metadata>
         <title>BloSS@M System Security Plan</title>
         <published>2022-04-05T00:00:00Z</published>
-        <last-modified>2024-03-27T00:00:00Z</last-modified>
+        <last-modified>2024-11-12T00:00:00Z</last-modified>
         <version>0.1</version>
         <oscal-version>1.1.2</oscal-version>
         <!-- ###
@@ -852,7 +852,8 @@
                 <value>Access tagging</value>
             </set-parameter>
             <set-parameter param-id="ac-02_odp.03">
-                <value>Accounts Manager(s): System Owner and Program Manager.</value>
+                <!-- AC-02_ODP[03] is pointing to the personnel or roles that approve accounts, separate form account manager. -->
+                <value>System Owner and Program Manager</value>
             </set-parameter>
             <set-parameter param-id="ac-02_odp.04">
                 <value>Organizational access control policies, standards and procedures, as documented in the AC-02.a statement implementation (statement-id="ac-2_smt.a", uuid="24a85abb-25ad-4686-850c-5c0e8ab69a0c").</value>
@@ -884,23 +885,31 @@
                 <party-uuid>09ad840f-aa79-43aa-9f22-25182c2ab11b</party-uuid>
             </responsible-role>
             <statement statement-id="ac-2_smt" uuid="4facc265-ba1d-4d66-afc7-6385984b6a1e">
+                <!--AC-2 control does not have an overall statement that needs to be satisfied. We documetn herein the overall, 
+                by-component, control sadisfaction to ensure all parts of the control are consistently implemented.-->
                 <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d41751010" uuid="9d06a5a6-0c30-43cb-a18a-baabd616ddfb">
                     <description>
-                        <p>For the IAM entities that have a business need, and which have accounts created in Cognito, the Policy machines which implement NGAC in the two chaincodes are managing the access control for the Blossom business layer users and the BC Member's Authorizing Official that is uploading the ATO Attestation to the Authorization channel.</p>
+                        <p>For the Blossom business layer users and for the BC Member's Authorizing Official that is uploading
+                             the ATO Attestation to the Authorization channel (and which have accounts created in Cognito), 
+                            the access is controlled by the Policy machines implementing NGAC in the two chaincode channels.</p>
                     </description>
                     <prop name="control-origination" ns="https://fedramp.gov/ns/oscal" value="customer-configured">
                         <remarks>
-                            <p>The Blossom system's System Owner and System Administrator are repsonsible for approving, creating and managing accounts and grant or denie access to the system by maintaining accurate information in Cognito and updating the access control policies access control lists (ACLs).</p>
+                            <p>The Blossom system's <insert type="param" id-ref="ac-02_odp.03" /> are repsonsible for approving the creation, modification and deletion of accounts
+                                 and for delegating the System Administrator to act as Account Manager and implement the decissions which will grant or denie access to the system,
+                                  by maintaining accurate information in Cognito and updating the access control policies such as the Access Control Lists (ACLs).</p>
                         </remarks>
                     </prop>
                 </by-component>
                 <by-component component-uuid="e82e6e07-0c62-417e-8a19-3744991b4c65" uuid="eb710146-1ede-4876-9a3b-02c18408e506">
                     <description>
-                        <p>AWS manages the access to approved entities to the system's infrastructure, for deployment, maintenance, and operations.</p>
+                        <p> The AWS leveraged system manages the access to the system's infrastructure, for deployment, maintenance,
+                             and operations for the approved entities.</p>
                     </description>
                     <prop name="control-origination" ns="https://fedramp.gov/ns/oscal" value="leveraged">
                         <remarks>
-                            <p>Keep the ACL list current at all times.</p>
+                            <p>The entities granted privileges to deploy and maintain the system, are responsible for keeping the ACL
+                                 list current at all times so the leveraged system enforces them.</p>
                         </remarks>
                     </prop>
                 </by-component>
@@ -980,9 +989,8 @@
                 <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d41751010"
                     uuid="d52db118-3e6f-4b39-8fd9-a3a65dfcb6b1">
                     <description>
-                        <p>For this system, the entity with the System Administrator role
-                             acts as the Accounts Manager and is responsible for creating, 
-                             revoking, deleting accounts per decisions made by the System Owner and the Program Manager.</p>
+                        <p>For this system, the entity with the System Owner role will play teh role of the Account Manager approve creation, 
+                             revokation, deletion of accounts and delegate the entity with teh System Adminstrator role to implement the decisions.</p>
                     </description>
                 </by-component>
             </statement>
@@ -1039,7 +1047,7 @@
                 <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d41751010"
                     uuid="40d40fbc-aed0-4323-9846-2ed3dc0f321e">
                     <description>
-                        <p>Request to create accounts are approved <insert type="param" id-ref="ac-02_odp.03" />by the System Owner and the Program Manager;    </p>
+                        <p>Request to create accounts are approved by <insert type="param" id-ref="ac-02_odp.03" />;    </p>
                     </description>
                 </by-component>
             </statement>
