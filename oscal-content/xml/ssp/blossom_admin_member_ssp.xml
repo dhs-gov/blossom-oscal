@@ -885,7 +885,7 @@
                 <party-uuid>09ad840f-aa79-43aa-9f22-25182c2ab11b</party-uuid>
             </responsible-role>
             <statement statement-id="ac-2_smt" uuid="4facc265-ba1d-4d66-afc7-6385984b6a1e">
-                <!--AC-2 control does not have an overall statement that needs to be satisfied. We documetn herein the overall, 
+                <!--AC-2 control does not have an overall statement that needs to be satisfied. We document herein the overall, 
                 by-component, control sadisfaction to ensure all parts of the control are consistently implemented.-->
                 <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d41751010" uuid="9d06a5a6-0c30-43cb-a18a-baabd616ddfb">
                     <description>
